@@ -8,22 +8,20 @@ import * as actionTypes from "./types";
 
 export const getCoffeeShops = () => {
   return async dispatch => {
+    dispatch(setCoffeeShopsLoading());
     try {
       const res = await axios.get("http://coffee.q8fawazo.me/api/?format=json");
-      const CoffeeShop = res.data;
+      const coffeeShops = res.data;
       dispatch({
         type: actionTypes.GET_COFFEESHOPS,
-        payload: CoffeeShop
+        payload: coffeeShops
       });
-    } catch (err) {}
+    } catch (err) {
+      console.error("error while fetching shops", err);
+    }
   };
 };
 
-export const setCoffeeShopsLoading = () => {
-  return async dispatch => {
-    dispatch({
-      type: actionTypes.COFFEESHOPS_LOADING
-      //   payload:
-    });
-  };
-};
+export const setCoffeeShopsLoading = () => ({
+  type: actionTypes.COFFEESHOPS_LOADING
+});

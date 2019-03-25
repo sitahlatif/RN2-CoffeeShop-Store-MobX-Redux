@@ -13,29 +13,27 @@ import CoffeeCart from "../CoffeeCart";
 import CoffeeDetail from "../CoffeeDetail";
 import Login from "../Login";
 import { connect } from "react-redux";
-import * as actionCreators from "../../Stores/actions";
+import { getCoffeeShops } from "../../Stores/actions/coffeeActions";
 
 class HomePage extends Component {
+  componentDidMount() {
+    this.props.getCoffeeShops();
+  }
   render() {
     return (
       <Container style={styles.transparent}>
         <View style={styles.overlay} />
         <Header style={styles.transparent} />
-        <CoffeeList />
+        <Login />
       </Container>
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    cart: state.cart.items,
-    coffee: state.coffee.coffeeShops
-  };
-};
+
 const mapDispatchToProps = dispatch => ({
-  getCoffeeShops: () => dispatch(actionCreators.getCoffeeShops())
+  getCoffeeShops: () => dispatch(getCoffeeShops())
 });
 export default connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(HomePage);

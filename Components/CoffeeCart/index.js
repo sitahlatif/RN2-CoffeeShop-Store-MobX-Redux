@@ -29,8 +29,7 @@ class CoffeeCart extends Component {
 }
 const mapStateToProps = state => {
   return {
-    cart: state.cart.items,
-    coffee: state.coffee.coffeeShops
+    cart: state.cart.items
   };
 };
 export default connect(mapStateToProps)(CoffeeCart);

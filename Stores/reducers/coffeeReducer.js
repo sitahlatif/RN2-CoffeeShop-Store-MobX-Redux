@@ -2,14 +2,14 @@ import * as actionTypes from "../actions/types";
 
 const initialState = {
   coffeeShops: [],
-  loading: false
+  loading: true
 };
-const reducer = (state = initialState, action) => {
+const coffeeReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.GET_COFFEESHOPS:
       return {
         ...state,
-        coffeeshops: action.payload,
+        coffeeShops: action.payload,
         loading: false
       };
     case actionTypes.COFFEESHOPS_LOADING:
@@ -22,4 +22,4 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+export default coffeeReducer;
