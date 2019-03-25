@@ -25,9 +25,5 @@ class CoffeeList extends Component {
     );
   }
 }
-const mapStateToProps = state => {
-  return {
-    coffee: state.coffeeReducer.coffeeShops
-  };
-};
-export default connect(mapStateToProps)(CoffeeList);
+
+export default CoffeeList;
