@@ -8,6 +8,7 @@ import coffeeshops from "./list";
 
 // Component
 import CoffeeItem from "./CoffeeItem";
+import { connect } from "react-redux";
 
 class CoffeeList extends Component {
   render() {
@@ -24,5 +25,9 @@ class CoffeeList extends Component {
     );
   }
 }
-
-export default CoffeeList;
+const mapStateToProps = state => {
+  return {
+    coffee: state.coffeeReducer.coffeeShops
+  };
+};
+export default connect(mapStateToProps)(CoffeeList);

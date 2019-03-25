@@ -5,23 +5,11 @@ import { Text, List, Button } from "native-base";
 // Component
 import CartItem from "./CartItem";
 
+import { connect } from "react-redux";
+
 class CoffeeCart extends Component {
-  state = {
-    items: [
-      {
-        drink: "Latte",
-        option: "Small",
-        quantity: 2
-      },
-      {
-        drink: "Espresso",
-        option: "Large",
-        quantity: 1
-      }
-    ]
-  };
   render() {
-    let items = this.state.items;
+    let items = this.props.cart;
     let cartItems;
     if (items) {
       cartItems = items.map((item, index) => (
@@ -39,5 +27,10 @@ class CoffeeCart extends Component {
     );
   }
 }
-
-export default CoffeeCart;
+const mapStateToProps = state => {
+  return {
+    cart: state.cart.items,
+    coffee: state.coffee.coffeeShops
+  };
+};
+export default connect(mapStateToProps)(CoffeeCart);
